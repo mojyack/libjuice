@@ -111,6 +111,7 @@ JUICE_EXPORT int juice_add_remote_candidate(juice_agent_t *agent, const char *sd
 JUICE_EXPORT int juice_add_turn_server(juice_agent_t *agent, const juice_turn_server_t *turn_server);
 JUICE_EXPORT int juice_set_remote_gathering_done(juice_agent_t *agent);
 JUICE_EXPORT int juice_send(juice_agent_t *agent, const char *data, size_t size);
+JUICE_EXPORT int juice_send_detailed(juice_agent_t *agent, const char *data, size_t size, int* ret);
 JUICE_EXPORT int juice_send_diffserv(juice_agent_t *agent, const char *data, size_t size, int ds);
 JUICE_EXPORT juice_state_t juice_get_state(juice_agent_t *agent);
 JUICE_EXPORT int juice_get_selected_candidates(juice_agent_t *agent, char *local, size_t local_size,

@@ -85,11 +85,18 @@ JUICE_EXPORT int juice_set_remote_gathering_done(juice_agent_t *agent) {
 }
 
 JUICE_EXPORT int juice_send(juice_agent_t *agent, const char *data, size_t size) {
+	int ret;
+	return juice_send_detailed(agent, data, size, &ret);
+}
+
+JUICE_EXPORT int juice_send_detailed(juice_agent_t *agent, const char *data, size_t size, int *ret) {
 	if (!agent || (!data && size))
 		return JUICE_ERR_INVALID;
 
-	if (agent_send(agent, data, size, 0) < 0)
+	*ret = agent_send(agent, data, size, 0);
+	if (*ret < 0) {
 		return JUICE_ERR_FAILED;
+	}
 
 	return JUICE_ERR_SUCCESS;
 }
